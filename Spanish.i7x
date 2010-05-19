@@ -932,7 +932,7 @@ Include (-
 ! =====================================================================
 !        Author: INFSP Task Team
 !       Version: 0.9
-!      Revision: 18 - Mayo - 2010
+!      Revision: 19 - Mayo - 2010
 ! Serial Number: 805.3
 
 Message "^Compilando con Spanish: Mensajes y rutinas de idioma [INFSP 0.9 MAYO 2010]";
@@ -1010,6 +1010,7 @@ global PreguntaSiNo = 0;
 	! hacerse cero automáticamente.
 
 Global quitacentos = 1;
+
 Array  texto_impreso --> 52;
 
 #ifndef NI_BUILD_COUNT;
@@ -1024,7 +1025,6 @@ Global dialecto_sudamericano = 0;
 ! Atributos y propiedades específicas de InformatE!, tambien usados en INFSP
 !---------------------------------------------------------------------------
 
-Property gender 0;
 Property imperativo alias name;
 Property irrelevante alias name;
 
@@ -1323,6 +1323,7 @@ Include (-
 ! Funciones de ayuda a la depuración
 !------------------------------------
 
+#ifdef DEBUG;
 [ ImprimeBuffer b desde l i;
     for (i=desde:i<desde+l:i++)
     print (char) b->i;
@@ -1335,6 +1336,8 @@ Include (-
    ImprimeBuffer(b, WORDSIZE, b-->0);
 #endif;
 ];
+
+#endif; !DEBUG
 
 #ifdef TARGET_GLULX; ! TARGET_GLULX
 [ PasarAMinuscula buffer   ! [INFSP] Necesario en EspanolAInformes (en modo Glulx), para q el buffer
@@ -1363,20 +1366,6 @@ Include (-
   }
   rfalse;
 ];
-
-
-! ----------------------------------------------------------------------------
-!  Las siguientes pueden ser útiles para los programadores de los
-!  ficheros de definición de lenguaje
-! ----------------------------------------------------------------------------
-
-
-[ BorrarBuffer b p i; ! infsp TODO : esta funcion no se usa, la borramos?
-    ! Rellena con espacios el buffer
-    for (i=2:i<INPUT_BUFFER_LEN:i++) b->i=' ';
-    VM_Tokenise(b, p);
-];
-
 
 
 !----------------------------------------------------------------
@@ -2395,68 +2384,6 @@ Include (-
 
 #endif; ! NI_BUILD_COUNT
 
-[ ThatorThose obj;      ! Used in the accusative
-    if (obj == player)            { print "you"; return; }
-    if (obj has pluralname)       { print "those"; return; }
-    if (obj has animate) {
-        if (obj has female)       { print "her"; return; }
-        else
-            if (obj hasnt neuter) { print "him"; return; }
-    }
-    print "that";
-];
-
-[ ItorThem obj;
-    if (obj == player)            { print "yourself"; return; }
-    if (obj has pluralname)       { print "them"; return; }
-    if (obj has animate) {
-        if (obj has female)       { print "her"; return; }
-        else
-            if (obj hasnt neuter) { print "him"; return; }
-    }
-    print "it";
-];
-
-![ IsorAre obj;
-!    if (obj has pluralname || obj == player) print "are"; else print "is";
-!];
-
-[ HasorHave obj;
-    if (obj has pluralname || obj == player) print "have"; else print "has";
-];
-
-[ CThatorThose obj;     ! Used in the nominative
-    if (obj == player)            { print "You"; return; }
-    if (obj has pluralname)       { print "Those"; return; }
-    if (obj has animate) {
-        if (obj has female)       { print "She"; return; }
-        else
-            if (obj hasnt neuter) { print "He"; return; }
-    }
-    print "That";
-];
-
-[ CTheyreorThats obj;
-    if (obj == player)             { print "You're"; return; }
-    if (obj has pluralname)        { print "They're"; return; }
-    if (obj has animate) {
-        if (obj has female)        { print "She's"; return; }
-        else if (obj hasnt neuter) { print "He's"; return; }
-    }
-    print "That's";
-];
-
-[ HisHerTheir o; if (o has pluralname) { print "their"; return; }
-	if (o has female) { print "her"; return; }
-	if (o has neuter) { print "its"; return; }
-	print "his";
-];
-
-[ HimHerItself o; if (o has pluralname) { print "theirselves"; return; }
-	if (o has female) { print "herself"; return; }
-	if (o has neuter) { print "itself"; return; }
-	print "himself";
-];
 -) instead of "Printed Inflections" in "Language.i6t".
 
 
@@ -3896,10 +3823,10 @@ Include (-
            ##Climb:      	print "Dónde";
            ##ThrowAt, ##Give, ##Show, ##Answer, ##Tell, ##Ask:
 				print "A quién";
-           ##Search:	print "A través de qué";
+           ##Search:		print "A través de qué";
            ##Tie: 	        print "A qué"; 
-           ##Enter: 	print "A dónde";
-           default:           print "A quién";
+           ##Enter: 		print "A dónde";
+           default:         print "A quién";
        };
     }
 ];
@@ -4018,37 +3945,6 @@ Include (-
   } ! for
 ];
 
-
-[ LanguagePrintShortName obj aux;
-
-    aux=aux;
-    if (obj provides gender)
-    {
-#ifdef DEBUG;
-    if (parser_trace>=10)
-        print "[",  obj, " tiene ~genero~=", obj.gender,
-            ".]^";
-    aux=debug_flag; debug_flag=0;
-#endif;
-        switch(obj.gender) 
-        {
-          1: give obj ~female ~pluralname; !infsp fix for I7 compatibility (en I7 no se puede asignar el 0 a gender, de 1 para arriba si)
-          2: give obj female ~pluralname;!print " FEMALE GIVEN "; !infsp debug
-          3: give obj ~female pluralname;
-          4: give obj female pluralname;
-        }
-#ifdef DEBUG;
-    debug_flag=aux;
-#endif;
-        rfalse;
-    }
-    
-    else{
-!    if (parser_trace>=10)
-!        print "[", obj, " no tiene la propiedad ~genero~.]";
-    rfalse;
-    }
-];
 
 ! ---------------------------------------------------------------------------
 ! Otras rutinas de soporte para el AUTOR de Aventuras 
@@ -4383,14 +4279,7 @@ Global short_name_case;
         print (PSN__) obj; return;
     }
 
-!    i = GetGNAOfObject(obj);
-   if (obj provides gender){ ![infsp]'gender'(informATE exclusive) es el genero de short_name del objeto
-    i=obj.gender;
-    if (i==1) ! infsp : esto es una chanchada, pero al cambiarse los valores de 'gender' por lo de la 
-       i=0;   ! compatibilidad con I7 (donde no puede ponerse gender = 0), quedo desfasado el array
-    if (i==2) ! LanguageGNAsToArticles. TODO: correjir el array y testear estabilidad.
-       i=1;
-   }else{ i = GetGNAOfObject(obj);}
+    i = GetGNAOfObject(obj);
 
 
 !    if (pluralise) {
