@@ -1,8 +1,10 @@
-Version 1/090618 of Spanish by Sebastian Arg begins here.
+Version 1/100518 of Spanish by Sebastian Arg begins here.
 
 "Spanish agrupa el trabajo de traducción necesario para la programación y jugabilidad en español." 
 
-Part SL1 - Spanish Initials and Kinds
+"baseda en InformATE de Zak"
+
+Part SL1 - Spanish Initials, Use options and Kinds
 
 Include Version 2/090402 of the Standard Rules by Graham Nelson. [asegurarse que la version de base de I7 es la adecuada]
 
@@ -32,19 +34,6 @@ Before printing the name of something (called new_obj):
 
 To allow no response: (- PreguntaSiNo=1; -). 		[ admitir 'no' como respuesta y no como 'noroeste', english. Urba work ]
 To permitir no como respuesta: (- PreguntaSiNo=1; -). 	[ admitir 'no' como respuesta y no como 'noroeste', spanish. Urba work ]
-
-
-[Use options translated - Use options SPANISH]
-[TODO: faltan algunos Uses]
-
-Use coma serial translates as (- Constant I7_SERIAL_COMMA; -).				[the serial comma]
-Use descripciones de localidad completas translates as (- Constant I7_LOOKMODE = 2; -).	[full-length room descriptions]
-Use descripciones de localidad abreviadas translates as (- Constant I7_LOOKMODE = 3; -).	[abbreviated room descriptions]
-Use economia de memoria translates as (- Constant MEMORY_ECONOMY; -).			[memory economy]
-Use no puntuacion translates as (- Constant NO_SCORING; -).					[no scoring]
-Use eco de linea de comandos translates as (- Constant ECHO_COMMANDS; -).		[command line echoing]
-Use sin undo translates as (- Constant PREVENT_UNDO; -).					[undo prevention]
-Use random predecible translates as (- Constant FIX_RNG; -).					[predictable randomisation]
 
 
 Part SL2 - Part Two
@@ -279,7 +268,6 @@ Part SL3 - Actions
 
 [ Gramatica basada en InformATE! (I6) (by Zak)]
 [ Verbos irregulares: filosofia usada en informATE!]
-[ Cada vez que aparece un nuevo 'container' o 'Adirection', I7 crea otra rutina filtro, ¿está desperdiciando recursos?]
 [ Para algunas acciones no estan permitidas ciertas variantes de la gramatica de informATE, como el uso de second noun como token.
   esto hace la respuesta del parser mucho mas tonta: Ej, corta el pan o corta el pan con el cuchillo. ToDo: podrá resolverse esto?]
 
@@ -653,13 +641,6 @@ Understand "pronombres" or "p" as requesting the pronoun meanings.
 Understand "notify" or "notify on/si" as switching score notification on. Understand the commands "notificar" and "notificacion" as "notify".
 Understand "notify off/no" as switching score notification off.
 
-Section SL3/2 - Grammar for Actions Exclusive from InformATE
-[ TODO tratar de colocar aqui grammars and actions para
-	BajarSub y otras
-	
-]
-
-
 Section SL3/9 - Activities rules Spanish Replacement
 [Spanish-output replacement for some Activities from Standar Rules]
 
@@ -891,58 +872,41 @@ VerboIrregular "hacer con gonear (indica lugar)" with imperativo 'gonear' 'xmuev
 #endif;
 -).
 
-[Understand "sarganar" or "infsp" as a mistake ("Hola! Soy sarganar, argentino de pura sepa. Implementé la mayor parte de la librería hispana para Inform 7. Quiero dar las gracias a Zak (y equipo) por su estupenda labor con informATE (librería madre de infsp), a Urbatain por su incomparable entusiasmo y testeos, a Mel Hython por su endemoniada necesidad de llevar al parser a su máximo, a Eliuk Blau por su pujante trabajo en infsp 6, a los chicos del plurilingüe rakontointeractiva (merci, grazie y danke!), a toda la comunidad hispana del CAAD (son muchos amigos, vaya) por hacer tan ameno el mundillo IF y a Graham Nelson y todo su equipo, por su dedicación en esta belleza de autoría que es Inform7.").
-]
 Part SL4 - Spanish Phrasebook
 
 Section SL4/0 - Spanish Saying, basados en la rutinas de impresión de InformATE!
 [ Documentacion de esta seccion: DocumentATE: Descripciones y Parsing: Descripcion de objetos y lugares ]
 
 [Articulos ]
-To say el (something - object):
-	(- print (the) {something}; -).
-To say El (something - object):
-	(- print (The) {something}; -).
-To say un (something - object):
-	(- print (un) {something}; -).
-To say Un (something - object):
-	(- print (_Un) {something}; -).
-To say nombre (something - object): [withdrawn: esto ya no deberia ser usado, simplemete poniendo [objeto] ya imprime el nombre corto en I7]
-	(- print (name) {something}; -).
+To say el (something - object):	(- print (the) {something}; -).
+To say El (something - object):	(- print (The) {something}; -).
+To say un (something - object):	(- print (un) {something}; -).
+To say Un (something - object):	(- print (_Un) {something}; -).
+[To say nombre (something - object): [withdrawn: esto ya no deberia ser usado, simplemete poniendo [objeto] ya imprime el nombre corto en I7]
+	(- print (name) {something}; -).]
 
-To say del (something - object):
-	(- print (del) {something}; -).
-To say al (something - object):
-	(- print (al) {something}; -).
-To say Al (something - object):
-	(- print (_Al) {something}; -).
+To say del (something - object): (- print (del) {something}; -).
+To say al (something - object):	(- print (al) {something}; -).
+To say Al (something - object):	(- print (_Al) {something}; -).
 
 
 [ Terminaciones para adjetivos ]
-To say o (something - object):         [say "Cogid[o noun]".]
-	(- print (o) {something}; -).
-To say s (something - object):         [withdrawn: I7 ya incluye esta posibilidad con 'objeto[s]'   ] 
-	(- print (s) {something}; -).
-To say _s (something - object):
-	(- print (_s) {something}; -).
+To say o (something - object): (- print (o) {something}; -).[say "Cogid[o noun]".]
+[To say s (something - object):         [withdrawn: I7 ya incluye esta posibilidad con 'objeto[s]'   ] 
+	(- print (s) {something}; -).]
+To say _s (something - object): (- print (_s) {something}; -).
 
 [ Terminaciones para verbos ]
-To say es (something - object):
-	(- print (es) {something}; -).
-To say Es (something - object):
-	(- print (_Es) {something}; -).
-To say n (something - object):
-	(- print (n) {something}; -).
-To say lo (something - object):	[say "Cóge[lo noun]".]
-	(- print (lo) {something}; -).
+To say es (something - object): (- print (es) {something}; -).
+To say Es (something - object): (- print (_Es) {something}; -).
+To say n (something - object): (- print (n) {something}; -).
+To say lo (something - object): (- print (lo) {something}; -). [say "Cóge[lo noun]".]
+	
 
 [ Verbo COGER/TOMAR segun dialecto ]
-To say coge:
-	(- coge(0); -).
-To say Coge :
-	(- Mcoge(0); -).
-To say MMcoge :
-	(- MMcoge(0); -).
+To say coge: (- coge(0); -).
+To say Coge: (- Mcoge(0); -).
+To say MMcoge: (- MMcoge(0); -).
 
 [Misc]
 To say (something - time) in spanish:			[decir la hora en español]
@@ -950,9 +914,6 @@ To say (something - time) in spanish:			[decir la hora en español]
 
 [To say (something - time) con palabras:	            	[decir la hora en español] [vamos a dejar esto por un tiempo]
 	(- print (PrintTimeOfDaySpanish) {something}; -).]
-
-
-
 
 
 [ -------------------------------------------------------------------------------------------------------------------------- ]
@@ -971,54 +932,38 @@ Include (-
 ! =====================================================================
 !        Author: INFSP Task Team
 !       Version: 0.9
-!      Released: 3 - Mayo - 2008
+!      Revision: 18 - Mayo - 2010
 ! Serial Number: 805.3
 
-Message "^Compilando con Spanish: Mensajes y rutinas de idioma [INFSP 0.9]";
-
-! Chekeo de correcta extension I7 instalada en correcta Build de I7
+Message "^Compilando con Spanish: Mensajes y rutinas de idioma [INFSP 0.9 MAYO 2010]";
 Message "   Asegurate de estar corriendo I7 Build 5Z71^";
-
-Array  buffer_nversion string 7;    ! infsp debug: Buffers for cheking I7 IDE correct version
-Array  buffer_bversion string 7;    ! See LanguageInitialise, below.
-
-Constant NI_NEEDED_VERSION "5Z71";
-
-
 
 ! ---------------------------------------------------------------------------
 !   Parte I.   Asuntos preliminares
 ! ---------------------------------------------------------------------------
 
-!infsp debug : check correct I7 Build Version
+
 #ifdef DEBUG;
-[ LanguageInitialise
-    ;
-    
+Array  buffer_nversion string 7;    ! infsp debug: Buffers for cheking I7 IDE correct version
+Array  buffer_bversion string 7;    ! See LanguageInitialise, below.
+
+Constant NI_NEEDED_VERSION "5Z71";
+[ LanguageInitialise;				!infsp debug : check correct I7 Build Version
    if ( ~~CheckI7version() ){
-    print "^^^ INFSP ATENCION : Este juego fue compilado con una version distinta de
-     Inform.^                   Asegurate de compilar con la ";
-    ImprimeTodoElBuffer(buffer_nversion);
-    print ". ^^^"; 
-!     deadflag = 3;
-!     quit;
+     print "^^^ INFSP ATENCION : Este juego fue compilado con una version distinta de
+        Inform.^                   Asegurate de compilar con la ";
+     ImprimeTodoElBuffer(buffer_nversion);
+     print ". ^^^"; 
    }
-!     deadflag = 2;
 
 ];
 
-[ CheckI7version
-   l i;
-
-!  print "^ CheckI7version: ^"; 
-
-  l = VM_PrintToBuffer(buffer_nversion, 4, NI_NEEDED_VERSION);
-  l = VM_PrintToBuffer(buffer_bversion, 4, NI_BUILD_COUNT);
-   
-  ! comparar caracter x caracter:
-  for (i=WORDSIZE:i<WORDSIZE+4:i++)
-    if (buffer_bversion->i ~= buffer_nversion->i) rfalse;
-  rtrue;
+[ CheckI7version	l i;
+	l = VM_PrintToBuffer(buffer_nversion, 4, NI_NEEDED_VERSION);
+	l = VM_PrintToBuffer(buffer_bversion, 4, NI_BUILD_COUNT);    
+	for (i=WORDSIZE:i<WORDSIZE+4:i++)	! comparar caracter x caracter:
+		if (buffer_bversion->i ~= buffer_nversion->i) rfalse;
+		rtrue;
 ];
 #endif; ! DEBUG
 
@@ -1044,12 +989,6 @@ Constant LanguageVersion = "  - Librería I6 Española 904.23, basada en InformA
 !----------------------------------------------
 ! CONSTANTES Y CLASES ESPECIFICAS DE INFORMATE
 !---------------------------------------------- 
-!Constant G_MASCULINO = 0;
-!Constant G_FEMENINO  = 1;
-!Constant G_PLURAL    = 3;
-Constant G_MASCULINO = 1; ! infsp new approach: para hacerlo bicompatible: I6/I7
-Constant G_FEMENINO  = 2;
-Constant G_PLURAL    = 2;
 
 Class VerboIrregular;
 
@@ -1058,19 +997,18 @@ Class VerboIrregular;
 !------------------------------------
 
 global PreguntaCualExactamente = 0;
-! Esta variable se pone a 1 cuando se le pregunta al jugador ¿Cuál
-! exactamente...? esto indica que puede ser necesario re-traducir la
-! respuesta que el jugador dé, ya que puede que simplemente el jugador
-! cambie de idea y en lugar de responder a nuestra pregunta introduzca
-! un comando completamente nuevo.
+	! Esta variable se pone a 1 cuando se le pregunta al jugador ¿Cuál
+	! exactamente...? esto indica que puede ser necesario re-traducir la
+	! respuesta que el jugador dé, ya que puede que simplemente el jugador
+	! cambie de idea y en lugar de responder a nuestra pregunta introduzca
+	! un comando completamente nuevo.
 
 global PreguntaSiNo = 0;
-! Esta variable debe ponerse a 1 manualmente si queremos que el verbo
-! 'no' sea accesible como respuesta (y no como punto cardinal). La
-! variable sólo afecta a la siguiente respuesta del jugador y vuelve a
-! hacerse cero automáticamente.
+	! Esta variable debe ponerse a 1 manualmente si queremos que el verbo
+	! 'no' sea accesible como respuesta (y no como punto cardinal). La
+	! variable sólo afecta a la siguiente respuesta del jugador y vuelve a
+	! hacerse cero automáticamente.
 
-!Global bandera_todo_vale; ! ¿y esta para qué sirve?
 Global quitacentos = 1;
 Array  texto_impreso --> 52;
 
@@ -1078,7 +1016,7 @@ Array  texto_impreso --> 52;
 Global dialecto_sudamericano = 0;
 #ifnot;
     #ifndef DIALECTO_SPANISH; ! seteado desde el I7 environment
-    Global dialecto_sudamericano = 0;
+       Global dialecto_sudamericano = 0;
     #endif;
 #endif;
 
@@ -1086,27 +1024,19 @@ Global dialecto_sudamericano = 0;
 ! Atributos y propiedades específicas de InformatE!, tambien usados en INFSP
 !---------------------------------------------------------------------------
 
-!Property additive adjectives;
 Property gender 0;
 Property imperativo alias name;
 Property irrelevante alias name;
-!Property name_m alias name;
-!Property additive name_f;
-!Property additive name_fp;
-!Property additive name_mp;
-Property synomym_f; ! hace falta definirlos como 'common property', para que funcione bien la prueba (obj provides propiedad)
-Property synomym_fp;
-Property synomym_m;
-Property synomym_mp;
 
 #ifdef ADMITIR_COMANDO_SALIDAS_OFF;
   Property salidas;
 #endif;
 
-Attribute nombreusado; ! usado internamente cuando se matchea el objeto por el nombre usado -) after "Definitions.i6t". 
+Attribute nombreusado; ! usado internamente cuando se matchea el objeto por el nombre usado
+-) after "Definitions.i6t". 
+
 
 Include (-
-
 ! Definicion de bufferaux y parseraux, usados en DictionaryLookup [001115]
 #ifdef TARGET_ZCODE;
   Array bufferaux -> 123;
@@ -1129,27 +1059,26 @@ Include (-
 [ DictionaryLookup texto longitud
     i;
 
- ! copiar texto a bufferaux (copiado especial)
- for (i=0:i<longitud:i++) bufferaux->(WORDSIZE+i) = texto->i;
-
- ! completar correctamente cabeceras de los buffers
- !	para la rutina Tokenise.
+	! copiar texto a bufferaux (copiado especial)
+	for (i=0:i<longitud:i++) bufferaux->(WORDSIZE+i) = texto->i;
+	! completar correctamente cabeceras de los buffers
+	!	para la rutina Tokenise.
 #ifdef TARGET_ZCODE;
-  bufferaux->1 = longitud;
-!  bufferaux->0 = longitud;
-  bufferaux->0 = 120;
-  parseaux-> 0 = 1;
+	bufferaux->1 = longitud;
+	bufferaux->0 = 120;
+	parseaux-> 0 = 1;
 #ifnot; ! TARGET_GLULX
-  bufferaux-->0 = longitud;
+	bufferaux-->0 = longitud;
 #endif; ! TARGET_
-
-            if (parser_trace>=9) { ! infsp debug
-                print "    DictionaryLookup: texto a procesar: |";
-                  ImprimeTodoElBuffer(bufferaux);
-                print "|^";
-            }
-  VM_Tokenise(bufferaux,parseaux); ! procesar texto de bufferaux, el resultado está en parseaux-->1
-  return parseaux-->1; ! retornar address del token encontrado (-1 si falla)
+#ifdef DEBUG;
+    if (parser_trace>=9) { ! infsp debug
+		print "    DictionaryLookup: texto a procesar: |";
+        ImprimeTodoElBuffer(bufferaux);
+        print "|^";
+    }
+#endif;
+	VM_Tokenise(bufferaux,parseaux); ! procesar texto de bufferaux, el resultado está en parseaux-->1
+	return parseaux-->1; ! retornar address del token encontrado (-1 si falla)
 ];
 
 -) before "Vocabulary" in "Language.i6t".
@@ -1185,9 +1114,9 @@ Constant ALL2__WD    = 'todas';
 Constant ALL3__WD    = 'todo';
 Constant ALL4__WD    = 'ambos';
 Constant ALL5__WD    = 'ambas';
-Constant AND1__WD       = 'y//';
-Constant AND2__WD       = 'y//';
-Constant AND3__WD       = 'e//';
+Constant AND1__WD    = 'y//';
+Constant AND2__WD    = 'y//';
+Constant AND3__WD    = 'e//';
 Constant BUT1__WD   = 'excepto';
 Constant BUT2__WD   = 'menos';
 Constant BUT3__WD   = 'salvo';
@@ -1269,8 +1198,8 @@ Array LanguageDescriptors table
     'esas'	$$000010000010    POSSESS_PK      1
     'su'	$$110000110000    POSSESS_PK      '-le'
     'sus'	$$000110000110    POSSESS_PK      '-le'
-    'el'		$$100000100000    DEFART_PK       NULL
-    'la'		$$010000010000    DEFART_PK       NULL
+    'el'	$$100000100000    DEFART_PK       NULL
+    'la'	$$010000010000    DEFART_PK       NULL
     'los'	$$000100000100    DEFART_PK       NULL
     'las'	$$000010000010    DEFART_PK       NULL
     'un'	$$100000100000    INDEFART_PK     NULL
@@ -1278,14 +1207,14 @@ Array LanguageDescriptors table
     'unos'	$$000100000100    INDEFART_PK     NULL
     'unas'	$$000010000010    INDEFART_PK     NULL
     'algún'	$$100000100000    INDEFART_PK     NULL
-   'algunos'	$$000100000100    INDEFART_PK     NULL
-   'algunas'	$$000010000010    INDEFART_PK     NULL
+   'algunos' $$000100000100    INDEFART_PK     NULL
+   'algunas' $$000010000010    INDEFART_PK     NULL
  'encendido' $$100000100000    light             NULL
  'encendida' $$010000010000    light             NULL
 'encendidos' $$000100000100    light             NULL
 'encendidas' $$000010000010    light             NULL
-   'apagado'	$$100000100000    (-light)          NULL
-   'apagada'	$$010000010000    (-light)          NULL
+   'apagado' $$100000100000    (-light)          NULL
+   'apagada' $$010000010000    (-light)          NULL
   'apagados' $$000100000100    (-light)          NULL
   'apagadas' $$000010000010    (-light)          NULL;
 -) instead of "Descriptors" in "Language.i6t".
@@ -1305,30 +1234,30 @@ Array LanguageNumbers table
     if (n==0) { print "cero"; rfalse; }
     if (n<0) { print "menos "; n=-n; }
     if (n>=1000) { 
-        if (n<2000) print "mil";
+		if (n<2000) print "mil";
         else { LanguageNumber(n/1000,1); print " mil";} 
         n=n%1000; 
         if (n~=0) print " ";
     }
     if (n>=100)  { 
-     CientosEspanol(n/100); 
-         if (n%100~=0) print " ";
-     n=n%100; 
+		CientosEspanol(n/100); 
+        if (n%100~=0) print " ";
+		n=n%100; 
     }
     if (n==0) rfalse;
 
     if (n<10) {
-	DigitoEspanol(n); rfalse;
+		DigitoEspanol(n); rfalse;
     }
     if (n>=20)
-	{  m=n/10;
-            if (n%10~=0) {
-              if (m==2) print "veinti";
+	{	m=n/10;
+        if (n%10~=0) {
+				if (m==2) print "veinti";
             } else {
-              if (m==2) print "veinte";
+				if (m==2) print "veinte";
             }
             if (m==3) print "treinta";
-	    if (m==4) print "cuarenta";
+			if (m==4) print "cuarenta";
             if (m==5) print "cincuenta";
             if (m==6) print "sesenta";
             if (m==7) print "setenta";
@@ -1369,44 +1298,19 @@ Array LanguageNumbers table
 ];
 
 [ CientosEspanol n;
-
-if (n==1) { print "ciento"; rfalse; }
-if (n==2) { print "dos";}
-if (n==3) { print "tres";}
-if (n==4) { print "cuatro";}
-if (n==5) { print "quinientos"; rfalse;}
-if (n==6) { print "seis";}
-if (n==7) { print "sete";}
-if (n==8) { print "ocho";}
-if (n==9) { print "nove";}
-print "cientos"; rfalse;
+	if (n==1) { print "ciento"; rfalse; }
+	if (n==2) { print "dos";}
+	if (n==3) { print "tres";}
+	if (n==4) { print "cuatro";}
+	if (n==5) { print "quinientos"; rfalse;}
+	if (n==6) { print "seis";}
+	if (n==7) { print "sete";}
+	if (n==8) { print "ocho";}
+	if (n==9) { print "nove";}
+	print "cientos"; rfalse;
 ];
 -) instead of "Numbers" in "Language.i6t".
 
-
-Section 5 - Directions
-
-
-[Include (-
-[ LanguageDirection d; ! [INFSP] Se agregaron los articulos, para una correcta impresion.
-    switch(d)          !         Usado en PrintCommand y en Salidas.
- {   n_to: print "al norte";
-     s_to: print "al sur";
-     e_to: print "al este";
-     w_to: print "al oeste";
-     ne_to: print "al nordeste";
-     nw_to: print "al noroeste";
-     se_to: print "al sudeste";
-     sw_to: print "al suroeste";
-     u_to: print "arriba";
-     d_to: print "abajo";
-     in_to: print "dentro";
-     out_to: print "fuera";
-     default: return RunTimeError(9,d);
-    }
-];
--) instead of "Directions" in "Language.i6t".
-]
 
 Section 6 - Translation
 
@@ -1434,7 +1338,7 @@ Include (-
 
 #ifdef TARGET_GLULX; ! TARGET_GLULX
 [ PasarAMinuscula buffer   ! [INFSP] Necesario en EspanolAInformes (en modo Glulx), para q el buffer
-        i;                          !         sea reconocido (al usar infinitivo en mayuscula (EXAMINAR) o verbos pronominales (EXAMINALA)
+        i;                 !         sea reconocido (al usar infinitivo en mayuscula (EXAMINAR) o verbos pronominales (EXAMINALA)
     for (i=WORDSIZE:i<(WORDSIZE+(buffer-->0)):i++)
         buffer->i = VM_UpperToLowerCase (buffer->i);
     return buffer;
@@ -1455,15 +1359,6 @@ Include (-
   objectloop(i in donde) {
     if (WordInProperty(w, i, name)) rtrue;
 
-    if (i provides synomym_f)    if (TextInProperty (i,synomym_f,w)==1) rtrue;
-    if (i provides synomym_fp)   if (TextInProperty (i,synomym_fp,w)==1) rtrue;
-    if (i provides synomym_m)   if (TextInProperty (i,synomym_m,w)==1) rtrue;
-    if (i provides synomym_mp)  if (TextInProperty (i,synomym_mp,w)==1) rtrue;
-
-!    if (WordInProperty(w, i, name_f)) rtrue;
-!    if (WordInProperty(w, i, name_mp)) rtrue;
-!    if (WordInProperty(w, i, name_fp)) rtrue;
-!    if (WordInProperty(w, i, adjectives)) rtrue;
     if (children(i) && EncajeSimplon(w, i)) rtrue;
   }
   rfalse;
@@ -1511,6 +1406,7 @@ Include (-
 
 [ QuitarAcentos buf pars x i word at len;
 
+#ifdef DEBUG;
     if (parser_trace >= 7) ! imprimir el buffer recibido
     {
           print "^[ QuitarAcentos:  ";
@@ -1518,6 +1414,7 @@ Include (-
              ImprimeTodoElBuffer(buf);
           print "|^";
     } 
+#endif;
     VM_Tokenise(buf, pars); 
     for (x=1:x<=tokenCount(pars):x++) ! para cada token
     {
@@ -1527,12 +1424,14 @@ Include (-
 
 	if (word==0) ! no comprendida
        {
+#ifdef DEBUG;
 		if (parser_trace>=7)
 		{
 		    print "    QuitarAcentos:NO COMPRENDIDO: |";
 			ImprimeBuffer(buf, at, len);
 		    print "|^";
 		}
+#endif;
 		for (i=at:i<at+len:i++)
 		   switch(buf->i)
 		  {
@@ -1553,11 +1452,13 @@ Include (-
         }
     }
 
+#ifdef DEBUG;
     if (parser_trace>=7){
         print "    Buffer sin acentos: |";
         ImprimeTodoElBuffer(buf);
         print "|^";
     }
+#endif;
 ];
 
 ! funciones de soporte para gestionar parse y buffer
@@ -1613,11 +1514,12 @@ Include (-
 
 [ EspanolAInformes buf pars x i word at len romper_en siguiente retokenise at2; !    print "   EspanolAInformes called^"; ! infsp debug
 
-     #ifdef TARGET_GLULX; ! TARGET_GLULX
+   #ifdef TARGET_GLULX; ! TARGET_GLULX
     buf = PasarAMinuscula (buf); ![INFSP] Necesario para q no cazque al procesar infinitivos
-	#endif;
+   #endif;
 
     VM_Tokenise( buf, pars);     retokenise=0;
+#ifdef DEBUG;
     if (parser_trace>=7) !imprimir el buf recibido
     {
           print "^[ EspanolAInformes:  ";
@@ -1625,6 +1527,7 @@ Include (-
 		ImprimeTodoElBuffer(buf);
           print "|^  ";
     } 
+#endif;
     if (quitacentos) QuitarAcentos(buf, pars);
 
      for (x=1:x<=tokenCount(pars):x++) ! para cada token
@@ -1633,6 +1536,7 @@ Include (-
 	at = tokenPos (pars,x); ! position in buffer of token 1,2,3... 
 	len = tokenLen (pars,x);! length in chars of token 1,2,3...
 
+#ifdef DEBUG;
 	if (parser_trace>=7){
           print "Palabra ",x," : ";
           if (word==0)
@@ -1641,6 +1545,7 @@ Include (-
             print (address) word," ^";
           print " ^";
         }        
+#endif;
 
 	if (dialecto_sudamericano && (word == 'coge'))
 	{
@@ -1699,6 +1604,7 @@ Include (-
            buf->(at+len+3)='g';
            buf->(at+len+4)='o';
            retokenise=1;
+#ifdef DEBUG;
            if (parser_trace>=7) !imprimir el buf recibido
 	   {
 		print "^[   YLUEGO:  ";
@@ -1706,18 +1612,20 @@ Include (-
 		ImprimeTodoElBuffer(buf);
 		print "|^  ";
 	    } 
+#endif;
        }
     }     
 
     if (word==0) ! no comprendida
     {
+#ifdef DEBUG;
         if (parser_trace>=7)
         {
             print "NO COMPRENDIDO: |";
             ImprimeBuffer(buf, at, len);
             print "|^";
         }
-        
+#endif;        
         if (len > 2) !sólo si tiene más de tres letras
         {
            romper_en=0;
@@ -1774,11 +1682,13 @@ Include (-
         EliminarDuplicados(buf, pars);
     }
     
+#ifdef DEBUG;
     if (parser_trace>=7){
        print "Buffer traducido a informese: ^|";
         ImprimeTodoElBuffer(buf);
        print "| (", pars->1," palabras) ^";
     }
+#endif;
 ];
 
 
@@ -1823,6 +1733,7 @@ Include (-
     word at len x i siguiente retokenise;
 
 !    VM_Tokenise(buf, pars);
+#ifdef DEBUG;
     if (parser_trace>=8) !imprimir el buffer recibido
     {
           print "^[ EliminarDuplicados:  ";
@@ -1830,6 +1741,7 @@ Include (-
               ImprimeTodoElBuffer(buf);
           print "| (", pars->1, " palabras)^";
     } 
+#endif;
     for (x=1:x<=tokenCount(pars):x++) ! para cada token
     {
 	word = tokenDict (pars,x); !dictionary value of token 1,2,3...
@@ -1838,8 +1750,10 @@ Include (-
 	len = tokenLen (pars,x);! length in chars of token 1,2,3...
     if ((word==siguiente) && (word~=0))
     {
+#ifdef DEBUG;
         if (parser_trace>=8) print "Encontrados duplicados!:",
 		(address) word, "=", (address) siguiente, ".^";
+#endif;
         for (i=at:i<at+len:i++) buf->i=' ';
         retokenise=1;
     }
@@ -1847,12 +1761,14 @@ Include (-
     if (retokenise) 
     VM_Tokenise(buf, pars);
 
+#ifdef DEBUG;
     if (parser_trace>=8) !imprimir el buffer recibido
     {
           print "Buffer resultante: |";
         ImprimeTodoElBuffer(buf);
           print "| (", pars->1, " palabras)^";
     } 
+#endif;
 ];
 
 
@@ -1883,6 +1799,7 @@ Include (-
 [ LanguageIsVerb buf pars pos
     i word at len;
     
+#ifdef DEBUG;
     if (parser_trace>=7) !imprimir el buffer recibido
     {
 	print "^[ LanguageIsVerb:  ";
@@ -1890,7 +1807,7 @@ Include (-
 		ImprimeTodoElBuffer(buf);
 	print "|, pos=", pos, "^  ";
     } 
-
+#endif;
     if (PreguntaCualExactamente) ! caso de desambiguación
 	EspanolAInformes(buf, pars); ! revisar la existencia de sufijos pronominales la/le/lo/me/te/se
     word = tokenDict (pars,pos); !dictionary value of token 1,2,3...
@@ -1900,8 +1817,10 @@ Include (-
     ! Si la palabra se reconoce, devolverla sin más
      if (word~=0 && word->#dict_par1 & 1 ~= 0)
     {
+#ifdef DEBUG;
 	if (parser_trace>=7) print " la palabra ~", (address)
 		word, "~ está en el diccionario.^";
+#endif;
 	return    (word);
     }
 
@@ -1920,11 +1839,13 @@ Include (-
 	if (parser_trace>=7) print "^ Verbo no reconocido sin la
 		'r'. ^Probando irregulares...";
  	i=BuscarEntreVerbosIrregulares(buf + at,len);
+#ifdef DEBUG;
 	if (parser_trace>=7) 
 	{
 		if (i==0) print "No reconocido como irregular.^";
 		else print "      Reconocido como el verbo ", (address) i, "^";
 	}
+#endif;
     }     
        if (parser_trace>=7) 
         print " ^                   -- end LanguageIsVerb ]^";
@@ -1934,12 +1855,13 @@ Include (-
 [ QuitandoRFinal texto longitud
     i;
 
+#ifdef DEBUG;
     if (parser_trace>=9) {
 	print "^[ QuitandoRFinal: buffer recibido |";
 		ImprimeBuffer(texto, 0, longitud);
 	print "|^";
     }
-	
+#endif;	
 	if (texto->(longitud-1)~='r')
     {
 	if (parser_trace>=9) print "No termina en 'r'^";
@@ -1973,8 +1895,10 @@ Include (-
 
     objectloop (verbo ofclass VerboIrregular)
     {
+#ifdef DEBUG;
 	if (parser_trace>=8) print "^[Bucando irregulares. Probando
 		con ~", (name) verbo, "~.-->"; 	
+#endif;
 		k = VM_PrintToBuffer (texto_impreso,46,verbo);
 
     
@@ -1988,11 +1912,11 @@ Include (-
 	jump NoCoincide; ! si una sola letra no coincide,
 	! Si ha pasado los test anteriores, hemos hallado una
 	! coincidencia
-	if (parser_trace>=8) print "¡coincide!^";
+	#ifdef DEBUG;if (parser_trace>=8) print "¡coincide!^";#endif;
 	return (verbo.&imperativo-->0);
 
 	.NoCoincide;
-	if (parser_trace>=8) print "no coincide^";
+	#ifdef DEBUG;if (parser_trace>=8) print "no coincide^";#endif;
     }
     return 0;
 ];
@@ -3296,10 +3220,6 @@ Include (-
     ! cuando se generan este tipo de preguntas aclaratorias.
      print "¿Quién concretamente, ";
     PreguntaCualExactamente=1;
-#ifndef NI_BUILD_COUNT;
-    ImprimirListaDudosos("o");
-#endif;
-!    print "?^";
 
      46:! El player ha nombrado un objeto ambiguo (hay más de noun con el
     ! mismo name cerca). El parser le pide aclaración. Este
@@ -3309,11 +3229,6 @@ Include (-
     ! cuando se generan este tipo de preguntas aclaratorias.
      print "¿Cuál concretamente, ";
     PreguntaCualExactamente=1;
-#ifndef NI_BUILD_COUNT;
-    ImprimirListaDudosos("o");
-#endif;
-
-!    print "?^";
 
      47: ! El player ha respondido "TODOS" o "AMBOS" a una pregunta
     ! aclaratoria como la anterior, pero el verbo no admite
@@ -4109,10 +4024,10 @@ Include (-
     aux=aux;
     if (obj provides gender)
     {
+#ifdef DEBUG;
     if (parser_trace>=10)
         print "[",  obj, " tiene ~genero~=", obj.gender,
             ".]^";
-#ifdef DEBUG;
     aux=debug_flag; debug_flag=0;
 #endif;
         switch(obj.gender) 
@@ -4145,43 +4060,6 @@ Include (-
 !     print "***", (string) txt, "***"; ! [010508] Corregido bug (string)
      print (string) txt; ! infsp fix, los asteriscos ya se ponian en parserm.h
      VM_Style(NORMAL_VMSTY);
-];
-
-
-! La siguiente función imprime la lista de objetos entre los que el
-! parser tiene dudas (porque todos ellos responden al name que ha
-! usado el player). Esta rutina es llamada desde los mensajes
-! (Miscellany,45) y (Miscellany,46)
-
-! Modificada en [021025] para que pregunte sólo por aquellos objetos
-! empatados a puntuación máxima por la desambiaguación. ! ACTUALMENTE SIN USAR EN I7 - 805.6
-[ ImprimirListaDudosos conjuncion
-    i k marker punt_max num_objs;
-  marker = 0;
-
-  ! obtener puntuacion maxima y cuantos objetos la tienen
-  for (i = 0, punt_max = -1: i < number_matched: i++) {
-    if (match_scores-->i > punt_max) {
-      punt_max = match_scores-->i;
-      num_objs = 1;
-    }
-    else if (match_scores-->i == punt_max)
-      num_objs++;
-  }
-
-  for (i = 1: i <= number_of_classes: i++)
-  {
-      while (((match_classes-->marker) ~= i)
-             && ((match_classes-->marker) ~= -i)) marker++;
-      k=match_list-->marker;
-
-      if (match_scores-->marker == punt_max) {
-        if (match_classes-->marker > 0) print (the) k; else print (a) k;
-
-        if (i < num_objs - 1)  print ", "; ! imprimir separadores
-        if (i == num_objs - 1) print " ", (string) conjuncion, " ";!imprimir ultimo separador
-      }
-  }
 ];
 
 
@@ -4232,23 +4110,6 @@ Include (-
   "Elegido dialecto CASTELLANO.";
 ];
 
-
-![ SubirSub; ! esto es tratado en accion I7 subiendo
-!  <<Go u_obj>>;
-!];
-
-![ BajarSub p;         ! 021230
-!  p=parent(player);
-!  if ((p~=location) && (p has supporter))
-!     if (noun~=nothing) <<GetOff noun>>;
-!     else <<GetOff p>>;
-!!  print "     Bajar: 2da"; ! infsp debug
-!  if (noun==nothing)  <<Go d_obj>>;
-!!  print "     Bajar: 3ra"; ! infsp debug
-!  if (noun has door) <<Enter noun>>;
-!!  print "     Bajar: 4ta"; ! infsp debug
-!  L__M(##Enter,2,noun);
-!];
 
 [ QuitarSub;
     if (second) <<Remove noun second>>;
@@ -4310,10 +4171,6 @@ Verb meta 'dialecto'
   * 'sudamericano'               -> DialectoSud
   * 'castellano'                    -> DialectoCast;
 
-!Extend 'baja' first                      ! 021230
-!    *                                   -> Bajar
-!    * 'por' noun                     -> Bajar;
-
 ifdef ADMITIR_COMANDO_SALIDAS_OFF;
   Verb 'salidas' 'exits'
     *                                   -> Salidas;
@@ -4372,16 +4229,6 @@ endif;  ! ADMITIR_COMANDO_SALIDAS_OFF
   Verb 'escenas' =  'scenes';
   
 #endif;  ! DEBUG
-
-!  Verb meta 'sarganar'
-!    *                                 -> InfspThanx;
-!  Verb 'infsp' = 'sarganar';
-
-[ InfspThanxSub;
-   print "Hola! Soy sarganar, argentino de pura sepa. Implementé la mayor parte de la librería hispana para Inform 7. Quiero dar las gracias a Zak (y equipo) por su estupenda labor con informATE (librería madre de infsp), a Urbatain por su incomparable entusiasmo y testeos, a Mel Hython por su endemoniada necesidad de llevar al parser a su máximo, a Eliuk Blau por su pujante trabajo en infsp 6, a los chicos del plurilingüe rakontointeractiva (merci, grazie y danke!), a toda la comunidad hispana del CAAD (son muchos amigos, vaya) por hacer tan ameno el mundillo IF y a Graham Nelson y todo su equipo, por su dedicación en esta belleza de autoría que es Inform7.^";
-
-];
-
 
 -) after "Grammar" in "Output.i6t".
 
@@ -4618,161 +4465,6 @@ Include (-
 ];
 -) after "Object Names III" in "Printing.i6t".
 
-Section 17 - Spanish Gender & Number Stuffs
-
-[904.23: Actualmente esto no anda. Ciertamente vengo fracasando en el intento de incluir la capacidades name_x de informate aqui ]
-
-[ 1=masculino,          2=femenino,
-  3=masculino plural, 4= femenino plural ]
-[Gender is a kind of value. The gender are single male, single female, plural male and plural female.
-[A thing has a number called the gender.]
-A thing has a gender.]
-
-[The gender property translates into I6 as "gender".]
-
-A thing can be single male, single female, plural male or plural female (this is its gender property).
-
-
-A thing has a text called female words. [The female words is usually "".]
-A thing has a text called plural female words. [The plural female words is usually "".]
-A thing has a text called male words. [The male words is usually "".]
-A thing has a text called plural male words. [The plural male words is usually "".]
-The female words property translates into I6 as "synomym_f".
-The plural female words property translates into I6 as "synomym_fp".
-The male words property translates into I6 as "synomym_m".
-The plural male words property translates into I6 as "synomym_mp".
-
-
-Include (-
-
-! Las declaraciones siguientes se mudaron a mucho más arriba:
-!Property synomym_f; ! hace falta definirlos como 'common property', para que funcione bien la prueba (obj provides propiedad)
-!Property synomym_fp;
-!Property synomym_m;
-!Property synomym_mp;
-
-!Constant ORDEBUG;
-! 2004.02.07 ORRecogName [Z, GLULX]
-
-! Many code here is from ORRecogName.h (part of OrLibs, by Jim Fisher)
-
-	[LanguageRefers obj wordnumber at len;
-
-                 if(obj ofclass CompassDirection) return -1; ! la brujula no interviene
-
-
-	#Ifdef DEBUG;
-	    if (parser_trace>=7){
-		at = tokenPos (parse,wordnumber); ! position in buffer of token 1,2,3... 
-		len = WordLength (wordnumber );! length in chars of token 1,2,3...
-		print " --|LanguageRefers: ", (name) obj," : [",ImprimeBuffer(buffer, at, len),"] --token:", wordnumber," ?^" ;
-	    }
-	#Endif; ! DEBUG
-
-
-	        if (obj provides synomym_f)
-		 if (TextInProperty (obj,synomym_f,wordnumber)==1){
-			give obj female ~pluralname; if (parser_trace>=7) print "Change DNA of ",(name) obj," to female - singular ^";
-			rtrue;
-		}
-
-	        if (obj provides synomym_fp)
-		 if (TextInProperty (obj,synomym_fp,wordnumber)==1){
-			give obj female pluralname;if (parser_trace>=7) print "Change DNA of ",(name) obj," to female - plural ^";
-			rtrue;
-		}
-
-	        if (obj provides synomym_m)
-		 if (TextInProperty (obj,synomym_m,wordnumber)==1){
-			give obj ~female ~pluralname; if (parser_trace>=7) print "Change DNA of ",(name) obj," to male - singular ^";
-			rtrue;
-		}
-
-	        if (obj provides synomym_mp)
-		 if (TextInProperty (obj,synomym_mp,wordnumber)==1){
-			give obj ~female pluralname;if (parser_trace>=7) print "Change DNA of ",(name) obj," to male - plural ^";
-			rtrue;
-		}
-
-		return -1;
-
-	];
-
-	Constant _RECOGBUFLEN 100;
-
-	array _namebuffer1 buffer _RECOGBUFLEN;
-	array _namebuffer2 buffer _RECOGBUFLEN;
-
-	#ifndef MAX_SIZE; constant MAX_SIZE=9;#endif;
-	
-	[TextInProperty obj prop wordnumber o i count count2 markerend markerstart check chara len;
-
-		if(obj ofclass CompassDirection) return -1;
-
-	       if ( ( (wordnumber->#dict_par1) & 128) ~= 0) return -1; ! las palabras de diccionario no intervienen
-!	       print "	dict_part1&1: ",((wordnumber->#dict_par1) & 1) ,"^"; ! las palabras de diccionario no intervienen
-!	       print "	dict_part1&128: ",((wordnumber->#dict_par1) & 128) ,"^"; ! las palabras de diccionario no intervienen
-
-!print "check 1: wn",wordnumber , " addr:", (address) wordnumber,"^";
-		len=VM_PrintToBuffer(_namebuffer1,_RECOGBUFLEN,obj,prop); ! dump to _namebuffer; len has the numbers of chars dumped
-		!len=_namebuffer1-->0;
-
-		if(len>_RECOGBUFLEN) len=_RECOGBUFLEN;
-		len=len+WORDSIZE; 
-
-		check=WordAddress(wordnumber);							!locate the text
-		count2=WordLength(wordnumber);							!get the size of it
-		if(count2>MAX_SIZE) count2=MAX_SIZE;					!and recalculate to the first 9 pertinant letters
-		for(markerend=markerstart=o=WORDSIZE:o<len:o++)		!search for words in short_name until match is found
-		{
-!print "check 2: wn",wordnumber , "^";
-			if((o+1)==len)o=len; !--if reached end of line, then go ahead and adjust the pointer as though an word break was found
-			if(o==len || _namebuffer1->o==' ' or ',' or '.' or '-' or '/' or '|')		!if found a whole word, or end of line...
-			{
-				if(o==markerstart) { !--if this word break is the first char, then this will be empty, so ignore
-					markerstart++;
-					continue;
-				}
-				markerend=o;									!adjust pointer and attempt to match...
-				count=(markerend-markerstart);! lenght of the word founded					
-				
-				#ifdef ORDEBUG; print"^For object ",(name)obj," testing word..."; for(i=0:i<count:i++) print(char)_namebuffer1->(i+markerstart);print"(length of ",count,")^";  #endif;
-				
-				if(count>MAX_SIZE) count=MAX_SIZE;				
-					
-				i=0;
-				if(count==count2) ! same lenght? if not, obviously they are not same words.
-				{
-					do 
-					{
-						chara=_namebuffer1->(i+markerstart);
-	! change to lowercase:
-	#ifndef TARGET_GLULX;
-						if(chara>64 && chara <91) chara=chara+32;
-	#ifnot;
-						chara=glk_char_to_lower(chara);
-	#endif;
-						if(chara~=check->i) {
-							break; ! words are differents so break.
-						}
-						i++;
-					}until(i==count);
-				}
-				if(i==count) {
-					#ifdef ORDEBUG; print"^TRUE";  #endif;
-					rtrue;
-				}
-				markerstart=o+1;
-			}
-		}
-		return -1; 
-		#ifdef ORDEBUG; print"^FALSE";  #endif;
-	];
-
-
--) after "Language.i6t".
-
-
 
 Spanish ends here.
 
@@ -4920,6 +4612,7 @@ Chapter: Contact INFSP Team
 	
 	Web: www caad es/informate/infsp/
 	Foro: www caad es/foro
+	Wiki:
 	Main Developer: Sarganar
 	Consultor / Tester: El Clerigo Urbatain
 	Tester / Extensions: Mel Hython
