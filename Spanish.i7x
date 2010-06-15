@@ -746,14 +746,14 @@ The spanish print the final question rule is listed in before handling the final
 This is the spanish print the final question rule:
 	let named options count be 0;
 	repeat through the Table of Spanish Final Question Options:
-		if the only if victorious entry is false or the game ended in victory:
+		if the only if victorious entry is false or the story has ended finally:
 			if there is a final response rule entry
 				or the final response activity entry [activity] is not empty:
 				if there is a final question wording entry, increase named options count by 1;
 	if the named options count is less than 1, abide by the immediately quit rule;
 	say "¿Quieres ";
 	repeat through the Table of Spanish Final Question Options:
-		if the only if victorious entry is false or the game ended in victory:
+		if the only if victorious entry is false or the story has ended finally:
 			if there is a final response rule entry
 				or the final response activity entry [activity] is not empty:
 				if there is a final question wording entry:
@@ -762,16 +762,16 @@ This is the spanish print the final question rule:
 					if the named options count is 0:
 						say "?[line break]";
 					otherwise if the named options count is 1:
-						if using the serial comma option, say ",";
-						say " o ";
+						if the serial comma option is active, say ",";
+						say " or ";
 					otherwise:
-						say ", ".
-
+						say ", ";
+						
 The standard respond to final question rule is not listed in any rulebook.
 The spanish standard respond to final question rule is listed last in for handling the final question.
 This is the spanish standard respond to final question rule:
 	repeat through the Table of Spanish Final Question Options:
-		if the only if victorious entry is false or the game ended in victory:
+		if the only if victorious entry is false or the story has ended finally:
 			if there is a final response rule entry
 				or the final response activity entry [activity] is not empty:
 				if the player's command matches the topic entry:
@@ -779,6 +779,7 @@ This is the spanish standard respond to final question rule:
 					otherwise carry out the final response activity entry activity;
 					rule succeeds;
 	issue miscellaneous library message number 8.
+
 
 Section SL3/10 - Final question options - Spanish Replacement
 
