@@ -1,8 +1,8 @@
-Version 1/100518 of Spanish by Sebastian Arg begins here.
+Version 1/100614 of Spanish by Sebastian Arg begins here.
 
 "Spanish agrupa el trabajo de traducción necesario para la programación y jugabilidad en español." 
 
-"baseda en InformATE de Zak"
+"basada en InformATE! de Zak"
 
 Part SL1 - Spanish Initials, Use options and Kinds
 
@@ -660,9 +660,9 @@ For printing the locale description (this is the spanish-you-can-also-see rule):
 		repeat with item running through things:
 			if the item is mentioned:
 				now the item is not marked for listing;
-		begin the listing nondescript items activity;
+		begin the listing nondescript items activity with the domain;
 		if the number of marked for listing things is 0:
-			abandon the listing nondescript items activity;
+			abandon the listing nondescript items activity with the domain;
 		otherwise:
 			if handling the listing nondescript items activity:
 				if the domain is a room:
@@ -689,11 +689,12 @@ For printing the locale description (this is the spanish-you-can-also-see rule):
 						giving brief inventory information, tersely, not listing
 						concealed items, listing marked items only;
 				otherwise say "[a list of marked for listing things including contents]";
-				[if the domain is the location, say " here";]
+				if the domain is the location, say " here";
 				say ".[paragraph break]";
 				unfilter list recursion;
-			end the listing nondescript items activity;
+			end the listing nondescript items activity with the domain;
 	continue the activity.
+
 
 The use initial appearance in room descriptions rule is not listed in any rulebook.
 
@@ -947,7 +948,7 @@ Message "   Asegurate de estar corriendo I7 Build 5Z71^";
 Array  buffer_nversion string 7;    ! infsp debug: Buffers for cheking I7 IDE correct version
 Array  buffer_bversion string 7;    ! See LanguageInitialise, below.
 
-Constant NI_NEEDED_VERSION "5Z71";
+Constant NI_NEEDED_VERSION "6E59";
 [ LanguageInitialise;				!infsp debug : check correct I7 Build Version
    if ( ~~CheckI7version() ){
      print "^^^ INFSP ATENCION : Este juego fue compilado con una version distinta de
@@ -2610,9 +2611,9 @@ Include (-
          if (x1 has supporter) print "bajarte "; else print "salir ";
          print_ret (del) x1, " antes.";
      2: "No puedes ir por ahí.";
-     3: "Eres incapaz de trepar por ", (the) x1, ".";
-     4: "Eres incapaz de bajar por ", (the) x1, ".";
-     5: "No puedes pasar a través ", (del) x1, ".";
+     !3: "Eres incapaz de trepar por ", (the) x1, ".";
+     !4: "Eres incapaz de bajar por ", (the) x1, ".";
+     !5: "No puedes pasar a través ", (del) x1, ".";
      6: "No puedes ir porque ", (the) x1, " no lleva", (n) x1, " a ningún sitio.";
 	7:	"Tienes que especificar en qué dirección ir.";
 	8:	print (The) actor, " se va hacia arriba";
@@ -2635,7 +2636,9 @@ Include (-
 	24:	print ", llevandose ", (the) x1;
 	25:	print ", llevando ", (the) x1, " dentro";
 	26:	print ", llevándote a ti también";
-    }
+	27:	print "(saliendo primero de ", (the) x1, ")^"; say__p = 0; return;
+	28:	print "(abriendo primero ", (the) x1, ")^"; say__p = 0; return;
+       }
   Insert:
     ! 1: Error, el objeto no está en poder del jugador. [Nota,
     !    conviene mirar en este caso si el objeto es animado o no,
@@ -3247,6 +3250,7 @@ Include (-
         73: "Ese objeto no tiene sentido en ese contexto."; 
         74: print "[Esa es una orden fuera del mundo del juego, y solo tiene sentido para ti y el parser. No puedes ordenarle "
 	, (al) x1, " que haga eso.]^";
+        75:  print " Fin";
  }        
     
   No,Yes:      "Sólo era una pregunta retórica.";
@@ -4343,12 +4347,12 @@ Replace IndefArt;
 
 Include (-
 [ IndefArt obj i;
-    if (obj == 0) { print (string) NOTHING__TX; rtrue; }
+	if (obj == 0) { print (string) NOTHING__TX; rtrue; }
     i = indef_mode; indef_mode = true;
     if (obj has proper) { indef_mode = NULL; print "a ",(PSN__) obj; indef_mode = i; return; }
-    if (obj provides article) {
-       PrintOrRun(obj, article, true); print " ", (PSN__) obj; indef_mode = i;
-       return;
+    if ((obj provides article) && (obj.article ~= EMPTY_TEXT_VALUE)) {
+        PrintOrRun(obj, article, true); print " ", (PSN__) obj; indef_mode = i;
+        return;
     }
     PrefaceByArticle(obj, 2); indef_mode = i;
 ];
