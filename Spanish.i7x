@@ -763,7 +763,7 @@ This is the spanish print the final question rule:
 						say "?[line break]";
 					otherwise if the named options count is 1:
 						if the serial comma option is active, say ",";
-						say " or ";
+						say " o ";
 					otherwise:
 						say ", ";
 						
@@ -789,7 +789,7 @@ final question wording	only if victorious	topic		final response rule		final resp
 "RECUPERAR un juego guardado"	false				"recuperar"	immediately restore saved game rule	--
 "ver algunas CURIOSIDADES"	true	"curiosidades"	--	amusing a victorious player
 "TERMINAR"					false				"terminar"		immediately quit rule	--
---						false				"undo"		immediately undo rule	--
+"hacer UNDO del último comando"		false				"undo"		immediately undo rule	--
 
 Section SL3/11 - Declaraciones VerboIrregular
 [Hay problemas con los Unicode y los acentos. Tener cuidado al editar esto con editores no UTF-8]
