@@ -29,7 +29,8 @@ Use Auto Pronouns translates as (- Constant AUTO_PRONOUNS; -).
 To notice (o - an object): [actualizar pronombres. Ej:  Before printing the name of the cuchillo: notice the cuchillo. Permite usar correctamente >>COGELO,etc)]
 	(- PronounNotice({o}); -). 
 Before printing the name of something (called new_obj):
-	If using the Auto Pronouns option, notice the new_obj.[actualizar pronombres para ESE objeto]
+	If the Auto Pronouns option is active, notice the new_obj.[actualizar pronombres para ESE objeto]
+	[If using the Auto Pronouns option, notice the new_obj.[actualizar pronombres para ESE objeto]]
 
 
 To allow no response: (- PreguntaSiNo=1; -). 		[ admitir 'no' como respuesta y no como 'noroeste', english. Urba work ]
