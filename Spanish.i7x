@@ -1,4 +1,4 @@
-Version 1/100614 of Spanish by Sebastian Arg begins here.
+Version 1/100615 of Spanish by Sebastian Arg begins here.
 
 "Spanish agrupa el trabajo de traducción necesario para la programación y jugabilidad en español." 
 
@@ -690,7 +690,7 @@ For printing the locale description (this is the spanish-you-can-also-see rule):
 						giving brief inventory information, tersely, not listing
 						concealed items, listing marked items only;
 				otherwise say "[a list of marked for listing things including contents]";
-				if the domain is the location, say " here";
+				if the domain is the location, say " aquí";
 				say ".[paragraph break]";
 				unfilter list recursion;
 			end the listing nondescript items activity with the domain;
@@ -4507,7 +4507,7 @@ Chapter: Contact INFSP Team
 	
 	Web: www caad es/informate/infsp/
 	Foro: www caad es/foro
-	Wiki:
+	Wiki: wiki.caad.es/Inform7_Doc
 	Main Developer: Sarganar
 	Consultor / Tester: El Clerigo Urbatain
 	Tester / Extensions: Mel Hython
