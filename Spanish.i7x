@@ -1080,18 +1080,6 @@ Include (-
 
 -) before "Vocabulary" in "Language.i6t".
 
-[Section 2 - Brujula
-
-Include (-
-Class CompassDirection
- with capacity 0, article "el", description [; L__M(##Look, 7, self); ],
-  has scenery;
-
-Object Compass "brújula" has concealed  female;
-
--) instead of "Compass" in "Output.i6t".]
-
-
 
 Section 3 - Vocabulary
 
