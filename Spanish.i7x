@@ -1215,9 +1215,26 @@ Array LanguageNumbers table
     'dieciséis' 16 'diecisiete' 17 'dieciocho' 18 'diecinueve' 19
     'veinte' 20;
 
-[ LanguageNumber n venti m;
+[ LanguageNumber n venti m f;
     if (n==0) { print "cero"; rfalse; }
     if (n<0) { print "menos "; n=-n; }
+#Iftrue (WORDSIZE == 4);
+    if (n >= 1000000000) {
+        !if (f == 1) print ", ";
+    	!print (LanguageNumber) n/1000000000, " billón"; n = n%1000000000; f = 1;
+		if (n<2000000000) print "mil";
+        else { LanguageNumber(n/1000000000,1); print " mil";} 
+        n=n%1000000000; f = 1;
+        if (n~=0) print " ";
+    }
+    if (n >= 1000000) {
+    	print (LanguageNumber) n/1000000;
+		if ((n<2000000) && (f==0)) print " millón";
+        else { print " millones";} 
+        n = n%1000000;
+        if (n~=0) print " ";
+    }
+#Endif;
     if (n>=1000) { 
 		if (n<2000) print "mil";
         else { LanguageNumber(n/1000,1); print " mil";} 
