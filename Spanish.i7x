@@ -1,4 +1,4 @@
-Version 1/100615 of Spanish by Sebastian Arg begins here.
+Version 1/100616 of Spanish by Sebastian Arg begins here.
 
 "Spanish agrupa el trabajo de traducción necesario para la programación y jugabilidad en español." 
 
@@ -15,7 +15,6 @@ A room can be plural-named or singular-named. [spanish need: al listar rooms com
 The description of yourself is "Tan buen mozo como siempre."
 
 [Gestion Dialectos]
-Use Comando Salidas translates as (- Constant ADMITIR_COMANDO_SALIDAS; -).
 Use Dialecto Castellano translates as (- Global dialecto_sudamericano = 0; Constant DIALECTO_SPANISH; !Set to Castellano -).
 Use Dialecto Sudamericano translates as (- Global dialecto_sudamericano = 1; Constant DIALECTO_SPANISH; !Set to Sudamericano -).
 
@@ -1031,11 +1030,6 @@ Global dialecto_sudamericano = 0;
 Property imperativo alias name;
 Property irrelevante alias name;
 
-#ifdef ADMITIR_COMANDO_SALIDAS_OFF;
-  Property salidas;
-#endif;
-
-!Attribute nombreusado; ! usado internamente cuando se matchea el objeto por el nombre usado
 -) after "Definitions.i6t". 
 
 
@@ -1086,7 +1080,7 @@ Include (-
 
 -) before "Vocabulary" in "Language.i6t".
 
-Section 2 - Brujula
+[Section 2 - Brujula
 
 Include (-
 Class CompassDirection
@@ -1095,7 +1089,7 @@ Class CompassDirection
 
 Object Compass "brújula" has concealed  female;
 
--) instead of "Compass" in "Output.i6t".
+-) instead of "Compass" in "Output.i6t".]
 
 
 
@@ -1954,7 +1948,8 @@ Include (-
         !print "^   LanguageVerb: Verbo no es irregular.^"; ! infsp debug
       
       ! Tatar de matchear con la brújula - 807.7 infsp
-      objectloop (aux ofclass CompassDirection){
+!      objectloop (aux ofclass CompassDirection){
+      objectloop (aux in Compass){
         if (WordInProperty(i, aux, name)) {
           print "ir hacia algún lado";
 !          !LanguageDirection (aux.door_dir); ! the direction name as adverb
@@ -4019,50 +4014,6 @@ Include (-
     <<Take noun>>;
 ];
 
-ifdef ADMITIR_COMANDO_SALIDAS_OFF;
-  [ SalidasSub i flag flag2 j loc;
-    print "Salidas visibles:";
-    if (location == thedark)
-      loc = real_location;
-    else
-      loc = location;
-    j = 0;
-!    objectloop (i in compass) {
-    objectloop (i ofclass CompassDirection) {
-!print "obj:",(name) i,"^"; !infsp debug
-      if (loc provides Salidas)
-        switch (loc.Salidas (i)) !se envia el objeto de la brujula como parametro
-        {
-          false:
-            flag  = false;           ! Show la salida si existe la
-            flag2 = false;           ! propiedad al_* y no es un string.
-          true:
-            j++;                     ! La dirección ya ha sido escrita.
-            flag2 = true;
-          2:
-            flag2 = true;            ! No imprimir esta.
-          default:
-            flag  = true;            ! Imprimirla siempre.
-        };  ! de switch
-
-        if (loc provides (i.door_dir) &&
-          metaclass (loc.(i.door_dir)) ~= nothing or string ||
-          flag == true && flag2 == false)
-        {
-          if (j == 0)
-            print " ";
-          else
-            print ", ";
-          LanguageDirection (i.door_dir);
-          j++;
-        }  ! de if
-    }  ! de objectloop
-    if (j == 0)
-      " ninguna.^"; ! sugerencia Sothoth, salto de linea extra. SOLO I7
-    ".^";        ! sugerencia Sothoth, salto de linea extra. SOLO I7
-  ];
-endif;  ! ADMITIR_COMANDO_SALIDAS_OFF
-
 ! Algunas lineas de gramatica no incluidas en las SR (lineas que son propias de InformATE)
 ! [TODO]: a la espera de ser 'transferidas' a SL (Spanish Localization I7 Extension)
 ! Actualizacion, ahora si andan las Extend, porque se cambio de lugar la inclusion de SpanishG
@@ -4072,13 +4023,6 @@ Verb meta 'dialecto'
   *                                   -> Dialecto
   * 'sudamericano'               -> DialectoSud
   * 'castellano'                    -> DialectoCast;
-
-ifdef ADMITIR_COMANDO_SALIDAS_OFF;
-  Verb 'salidas' 'exits'
-    *                                   -> Salidas;
-  Extend only 'x//' first
-    *                                   -> Salidas;
-endif;  ! ADMITIR_COMANDO_SALIDAS_OFF
 
 ! GotoRoomSub: algunos momios de informATE estaban acotumbrados a hacer >xir 'nombre_habitacion'
 ! pero, despues de la Build 4S08 no fue posible sino la forma oficial
@@ -4411,12 +4355,7 @@ Mas detalles en el "INFSP 7 Manual.txt"
 
 Section: Comando Salidas
 
-Puede activarse el comando SALIDAS que mostrará al jugador las salidas de la localidad, usando:
-	Use Comando Salidas.
-
-Asi, el jugador podra hacer:
-	>>salidas
-	Salidas visibles: al norte, al sur, al este, al oeste.
+Anteriormente, Spanish daba soporte al comando salidas (heredado de informATE). Pero la evolucion interna de I7 hizo imcompatible el código asociado. Es mucho mejor utilizar un par de extensiones que ya hacen ese trabajo, como la Exit Description by Matthew Fletcher (hay una edicion SP en las librerias INFSP7).
 
 Section: Dialecto Sudamericano
 
