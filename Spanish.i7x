@@ -936,10 +936,10 @@ Include (-
 !        Author: INFSP Task Team
 !       Version: 0.9
 !      Revision: 19 - Mayo - 2010
-! Serial Number: 805.3
+! Serial Number: 1005.23
 
 Message "^Compilando con Spanish: Mensajes y rutinas de idioma [INFSP 0.9 MAYO 2010]";
-Message "   Asegurate de estar corriendo I7 Build 5Z71^";
+Message "   Asegurate de estar corriendo I7 Build 6E59^";
 
 ! ---------------------------------------------------------------------------
 !   Parte I.   Asuntos preliminares
@@ -970,7 +970,7 @@ Constant NI_NEEDED_VERSION "6E59";
 ];
 #endif; ! DEBUG
 
-Constant LanguageVersion = "  - Librería I6 Española 904.23, basada en InformATE!";
+Constant LanguageVersion = "  - Librería I6 Española 1005.23, basada en InformATE!";
 
 ! Definición de caractéres "baratos". Esto permite que estas letras
 ! ocupen menos bits en la máquina Z. No funciona si se intenta la
@@ -1035,7 +1035,7 @@ Property irrelevante alias name;
   Property salidas;
 #endif;
 
-Attribute nombreusado; ! usado internamente cuando se matchea el objeto por el nombre usado
+!Attribute nombreusado; ! usado internamente cuando se matchea el objeto por el nombre usado
 -) after "Definitions.i6t". 
 
 
