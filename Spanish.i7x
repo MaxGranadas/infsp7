@@ -2755,7 +2755,7 @@ Include (-
     ! Si el objeto tiene "soporte", la librería va a listar sus
     ! contenidos. Este es el encabezado de la lista
      20: print ", encima ", (del_) x1;
-    ! Como e l9, pero en otra modalidad (que se activa si
+    ! Como el 19, pero en otra modalidad (que se activa si
     ! EscribirListaDesde es llamada sin el modo BREVE_BIT)
      21: print " (en ", (el_) x1;
     ! Si el contenido tiene "recipiente" y puede verse su interior
@@ -2771,7 +2771,7 @@ Include (-
     ! librería imprime la constante Historia y a continuación este
     ! mensaje.
     " está ahora en su modo normal ~breve~, que da sólo descripciones
-    largas de los lugares la primera vez que son visitadas, y
+    largas de los lugares la primera vez que son visitados, y
     descripciones cortas en otro caso.";
 
  LMode2:
