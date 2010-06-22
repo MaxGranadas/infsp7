@@ -1,4 +1,4 @@
-Version 1/100616 of Spanish by Sebastian Arg begins here.
+Version 1/100622 of Spanish by Sebastian Arg begins here.
 
 "Spanish agrupa el trabajo de traducción necesario para la programación y jugabilidad en español." 
 
@@ -702,7 +702,8 @@ For printing a locale paragraph about a thing (called the item)
 	(this is the spanish use initial appearance in room descriptions rule):
 	if the item is not mentioned:
 		if the item provides the property initial appearance and the
-			item is not handled:
+			item is not handled and the initial appearance of the item is
+			not "":
 			increase the locale paragraph count by 1;
 			say "[initial appearance of the item]";
 			say "[paragraph break]";
@@ -718,6 +719,7 @@ For printing a locale paragraph about a thing (called the item)
 				say ".[paragraph break]";
 			now the item is mentioned;
 	continue the activity.
+
 
 The describe what's on scenery supporters in room descriptions rule is not listed in any rulebook.
 
