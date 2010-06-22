@@ -727,8 +727,8 @@ For printing a locale paragraph about a thing (called the item)
 	(this is the spanish describe what's on scenery supporters in room descriptions rule):
 	if the item is not undescribed and the item is scenery and
 		the item does not enclose the player:
-		set pronouns from the item;
 		if a locale-supportable thing is on the item:
+			set pronouns from the item;
 			repeat with possibility running through things on the item:
 				now the possibility is marked for listing;
 				if the possibility is mentioned:
@@ -743,6 +743,7 @@ For printing a locale paragraph about a thing (called the item)
 
 
 The print the final question rule is not listed in any rulebook.
+
 The spanish print the final question rule is listed in before handling the final question.
 This is the spanish print the final question rule:
 	let named options count be 0;
