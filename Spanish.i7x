@@ -1,4 +1,4 @@
-Version 1/100622 of Spanish by Sebastian Arg begins here.
+Version 1/100706 of Spanish by Sebastian Arg begins here.
 
 "Spanish agrupa el trabajo de traducción necesario para la programación y jugabilidad en español." 
 
@@ -770,6 +770,7 @@ This is the spanish print the final question rule:
 						say ", ";
 						
 The standard respond to final question rule is not listed in any rulebook.
+
 The spanish standard respond to final question rule is listed last in for handling the final question.
 This is the spanish standard respond to final question rule:
 	repeat through the Table of Spanish Final Question Options:
@@ -946,31 +947,6 @@ Message "   Asegurate de estar corriendo I7 Build 6E59^";
 ! ---------------------------------------------------------------------------
 !   Parte I.   Asuntos preliminares
 ! ---------------------------------------------------------------------------
-
-
-#ifdef DEBUG;
-Array  buffer_nversion string 7;    ! infsp debug: Buffers for cheking I7 IDE correct version
-Array  buffer_bversion string 7;    ! See LanguageInitialise, below.
-
-Constant NI_NEEDED_VERSION "6E59";
-[ LanguageInitialise;				!infsp debug : check correct I7 Build Version
-   if ( ~~CheckI7version() ){
-     print "^^^ INFSP ATENCION : Este juego fue compilado con una version distinta de
-        Inform.^                   Asegurate de compilar con la ";
-     ImprimeTodoElBuffer(buffer_nversion);
-     print ". ^^^"; 
-   }
-
-];
-
-[ CheckI7version	l i;
-	l = VM_PrintToBuffer(buffer_nversion, 4, NI_NEEDED_VERSION);
-	l = VM_PrintToBuffer(buffer_bversion, 4, NI_BUILD_COUNT);    
-	for (i=WORDSIZE:i<WORDSIZE+4:i++)	! comparar caracter x caracter:
-		if (buffer_bversion->i ~= buffer_nversion->i) rfalse;
-		rtrue;
-];
-#endif; ! DEBUG
 
 Constant LanguageVersion = "  - Librería I6 Española 1005.23, basada en InformATE!";
 
@@ -4183,7 +4159,7 @@ Include (-
 ];
 -) instead of "Relative Time Token" in  "Time.i6t".
 
-Section 14 - Spanish Banner
+Section 15 - Spanish Banner
 
 [just replacement "by" --> "por"]
 
@@ -4218,7 +4194,7 @@ EndActivity(PRINTING_BANNER_TEXT_ACT);
 ];
 -) instead of "Banner" in  "Printing.i6t". 
 
-Section 15 - PrefaceByArticle Hacked
+Section 16 - PrefaceByArticle Hacked
 
 [for use of rutines [el_], [un_] ]
 
@@ -4291,7 +4267,7 @@ Global short_name_case;
 
 -) instead of "Object Names II" in  "Printing.i6t".
 
-Section 16 - IndefArt Hacked
+Section 17 - IndefArt Hacked
 
 [! [infsp] Indefart: se agregó el "a " en caso de nombre propio " a Mamá"]
 
@@ -4312,6 +4288,41 @@ Include (-
 ];
 -) after "Object Names III" in "Printing.i6t".
 
+Section 18 - Checkin I7 Build version - Not for release 
+
+A startup rule:
+	Check I7 Version.
+
+To Check I7 Version: (- chkI7V(); -).
+
+Include (-
+#ifdef DEBUG;
+Array  buffer_nversion string 7;    ! infsp debug: Buffers for cheking I7 IDE correct version
+Array  buffer_bversion string 7;    ! See LanguageInitialise, below.
+
+Constant NI_NEEDED_VERSION "6E72";
+! LanguageInitialise: ojo que aqui aun no se seteo el I/O para Glulx (no andarian los prints y demás).
+
+[ chkI7V;				!infsp debug : check correct I7 Build Version
+!     print "LanguageInitialise^^"; 
+   if ( ~~CheckI7version() ){
+     print "^^^ INFSP ATENCION : Este juego fue compilado con una version distinta de
+        Inform (distinta a la soportada por la extensión Spanish).^Asegurate de compilar con la ";
+     ImprimeTodoElBuffer(buffer_nversion);
+     print ". ^^^"; 
+   }
+
+];
+
+[ CheckI7version	l i;
+	l = VM_PrintToBuffer(buffer_nversion, 4, NI_NEEDED_VERSION);
+	l = VM_PrintToBuffer(buffer_bversion, 4, NI_BUILD_COUNT);    
+	for (i=WORDSIZE:i<WORDSIZE+4:i++)	! comparar caracter x caracter:
+		if (buffer_bversion->i ~= buffer_nversion->i) rfalse;
+		rtrue;
+];
+#endif; ! DEBUG
+-) after "Definitions.i6t".
 
 Spanish ends here.
 
