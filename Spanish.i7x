@@ -1,4 +1,4 @@
-Version 1/100706 of Spanish by Sebastian Arg begins here.
+Version 1/100727 of Spanish by Sebastian Arg begins here.
 
 "Spanish agrupa el trabajo de traducción necesario para la programación y jugabilidad en español." 
 
@@ -75,6 +75,14 @@ Include (- has proper, -) when defining down.
 Include (- has proper, -) when defining inside.
 Include (- has proper, -) when defining outside.
 
+The indefinite article of north is "el".[para imprimir el norte, gracias Johan]
+The indefinite article of south is "el".
+The indefinite article of east is "el".
+The indefinite article of west is "el".
+The indefinite article of northeast is "el".
+The indefinite article of southwest is "el".
+The indefinite article of southeast is "el".
+The indefinite article of northwest is "el".
 
 Section SL2/1 - Replacing English verbs
 
