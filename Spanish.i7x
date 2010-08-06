@@ -4443,10 +4443,10 @@ Terminaciones para adjetivo:
 	Imprime "o", "a", "os" o "as".  
 
 	s......say "[The noun] ahora está[n noun] azul[s noun]." 
-	Imprime "s" si es plural o bien nada si es singular.
+	Imprime "s" si es plural o bien nada si es singular (es decir, si el objeto es plural-named, como zapatos o pantalones)
 
 	_s......say "[The noun] ahora está[n noun] azul[_s noun]." 
-	Imprime "es" si es plural o bien nada si es singular. Pensado para hacer concordar en número a ciertos adjetivos que terminan en consonante.
+	Imprime "es" si es plural o bien nada si es singular. Pensado para hacer concordar en número a ciertos adjetivos que terminan en consonante (como azul).
 
 Terminaciones para verbos:
 	es.......say "No [es noun] nada importante." 
