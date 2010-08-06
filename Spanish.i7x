@@ -1,4 +1,4 @@
-Version 1/100727 of Spanish by Sebastian Arg begins here.
+Version 1/100806 of Spanish by Sebastian Arg begins here.
 
 "Spanish agrupa el trabajo de traducción necesario para la programación y jugabilidad en español." 
 
@@ -906,8 +906,7 @@ To say Al (something - object):	(- print (_Al) {something}; -).
 
 [ Terminaciones para adjetivos ]
 To say o (something - object): (- print (o) {something}; -).[say "Cogid[o noun]".]
-[To say s (something - object):         [withdrawn: I7 ya incluye esta posibilidad con 'objeto[s]'   ] 
-	(- print (s) {something}; -).]
+To say s (something - object): (- print (s) {something}; -). [say "Ya no está[n noun] tan negro[s noun]."]
 To say _s (something - object): (- print (_s) {something}; -).
 
 [ Terminaciones para verbos ]
@@ -4443,8 +4442,11 @@ Terminaciones para adjetivo:
 	o ........say "Cogid[o noun]"
 	Imprime "o", "a", "os" o "as".  
 
-	_s......say "[The noun] ahora está[n noun] azul[_s]." 
-	Es muy similar al "[s]" de I7. Imprime "es" si es plural o bien nada si es singular. Pensado para hacer concordar en número a ciertos adjetivos que terminan en consonante.
+	s......say "[The noun] ahora está[n noun] azul[s noun]." 
+	Imprime "s" si es plural o bien nada si es singular.
+
+	_s......say "[The noun] ahora está[n noun] azul[_s noun]." 
+	Imprime "es" si es plural o bien nada si es singular. Pensado para hacer concordar en número a ciertos adjetivos que terminan en consonante.
 
 Terminaciones para verbos:
 	es.......say "No [es noun] nada importante." 
