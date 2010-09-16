@@ -1,4 +1,4 @@
-Version 1/100806 of Spanish by Sebastian Arg begins here.
+Version 1/100916 of Spanish by Sebastian Arg begins here.
 
 "Spanish agrupa el trabajo de traducción necesario para la programación y jugabilidad en español." 
 
@@ -2838,7 +2838,7 @@ Include (-
      1: print " (sobre ", (the) x1, ")";
      2: print " (en ", (the) x1, ")";
      3: print " (como ", (object) x1,")";
-     4: print "Sobre ", (the) x1;
+     4: print "Sobre ", (the) x1, " ";
     WriteListFrom(child(x1),
                       ENGLISH_BIT + RECURSE_BIT + PARTINV_BIT
                       + TERSE_BIT + ISARE_BIT + CONCEAL_BIT);
