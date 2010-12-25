@@ -1,4 +1,4 @@
-Version 1/101029 of Spanish by Sebastian Arg begins here.
+Version 1/101225 of Spanish by Sebastian Arg begins here.
 
 "Spanish agrupa el trabajo de traducción necesario para la programación y jugabilidad en español." 
 
@@ -948,8 +948,8 @@ Include (-
 !      Revision: 19 - Mayo - 2010
 ! Serial Number: 1005.23
 
-Message "^Compilando con Spanish: Mensajes y rutinas de idioma [INFSP 0.9 MAYO 2010]";
-Message "   Asegurate de estar corriendo I7 Build 6F95^";
+Message "^Compilando con Spanish: Mensajes y rutinas de idioma [INFSP 0.9 OCTUBRE 2010]";
+Message "   Asegurate de estar corriendo I7 Build 6G60^";
 
 ! ---------------------------------------------------------------------------
 !   Parte I.   Asuntos preliminares
@@ -4308,7 +4308,7 @@ Include (-
 Array  buffer_nversion string 7;    ! infsp debug: Buffers for cheking I7 IDE correct version
 Array  buffer_bversion string 7;    ! See LanguageInitialise, below.
 
-Constant NI_NEEDED_VERSION "6F95";
+Constant NI_NEEDED_VERSION "6G60";
 ! LanguageInitialise: ojo que aqui aun no se seteo el I/O para Glulx (no andarian los prints y demás).
 
 [ chkI7V;				!infsp debug : check correct I7 Build Version
