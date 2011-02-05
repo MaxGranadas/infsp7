@@ -1,4 +1,4 @@
-Version 1/101225 of Spanish by Sebastian Arg begins here.
+Version 1/110205 of Spanish by Sebastian Arg begins here.
 
 "Spanish agrupa el trabajo de traducción necesario para la programación y jugabilidad en español." 
 
@@ -3235,7 +3235,7 @@ Include (-
         69: "(primero tomas ", (the) x1, ")";
         70: "No puedes usar UNDO en este juego.";
         71: print (string) DARKNESS__TX;
-	72: print (The) x1, " tiene", (n) x1, " mejores cosas que hacer.";
+	72: print (The) x1, " tiene", (n) x1, " mejores cosas que hacer.^";
         73: "Ese objeto no tiene sentido en ese contexto."; 
         74: print "[Esa es una orden fuera del mundo del juego, y solo tiene sentido para ti y el parser. No puedes ordenarle "
 	, (al) x1, " que haga eso.]^";
