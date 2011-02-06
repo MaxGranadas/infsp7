@@ -1,4 +1,4 @@
-Version 1/110205 of Spanish by Sebastian Arg begins here.
+Version 1/110206 of Spanish by Sebastian Arg begins here.
 
 "Spanish agrupa el trabajo de traducción necesario para la programación y jugabilidad en español." 
 
@@ -7,7 +7,7 @@ Version 1/110205 of Spanish by Sebastian Arg begins here.
 Part SL1 - Spanish Initials, Use options and Kinds
 
 Include Version 2/090402 of the Standard Rules by Graham Nelson. [asegurarse que la version de base de I7 es la adecuada]
-
+[Use no deprecated features.]
 A thing can be female. [Habilita genero a inanimados, como containers, supporters, etc. Caracteristica necesaria en espanol]
 A room can be female. [Habilita genero a habitaciones. Caracteristica necesaria (a veces) en espanol, sobre todo al listar las habitaciones.]
 A room can be plural-named or singular-named. [spanish need: al listar rooms como 'las Escaleras']
@@ -4489,131 +4489,76 @@ Example: *	Cursillo Mini Juego - A little game from SPAC spanish webzine
 
 	*: "Cursillo Mini Juego"
 
-	[ Bienvenido al ejemplo del Cursillo Basico.
-	Relajate y lee el codigo, tratando de imaginarte qué es lo que hace
-	cada instrucción. Si amerita, en algunas porciones se han puesto las
-	referencias al manual (luego de la palabra R) donde se dan más detalles.
-	Usa la búsqueda (F3) para saltar a ellas o cualquier otra porción que no entiendas. ]
-
-
-	[Include Spanish Localization by Sarganar.]
-	[Include Spanish by Sarganar.]
-	
 	Include Spanish by Sebastian Arg.
-
-
-
-	The story headline is "Un ejemplo práctico paso a paso, escrito por Sarganar." [R: Bibliographic data]
-
-	[ Mensaje inicial]
+	
+	The story headline is "Un ejemplo práctico paso a paso, escrito por Sarganar."
+	
+	
 	When play begins: say "Bienvenido al...[line break]".
- 
-	[ Siempre describir la habitacion cuando se llegue a ella]
-	Use full-length room descriptions. [R: Use options]
-
-
-	[*** LA CELDA INICIAL Y LOS OBJETOS QUE CONTIENE ***]
-
+	
+	
+	Use full-length room descriptions.
+	
 	The Celda is a room. The printed name is "En medio de ningún sitio".
-	The description is "Estás en una especie de celda de paredes metálicas y
-	lisas. Hacia el norte no hay pared y fuera puedes ver un paisaje
-	soleado. Hacia el sur hay un pasadizo."
-
-	[ La salida norte: Se debe examinar si el objeto puerta de cristal
-	está cortado o no antes de decidir si el jugador puede
-	pasar. Además, se debe mirar si el objeto cúpula ha
-	disparado la alarma para ver si el jugador ha ganado
-	o todavía no puede salir. ]
-
-	Instead of going north in the Celda: [R:Going from, going to]
+	The description is "Estás en una especie de celda de paredes metálicas y	lisas. Hacia el norte no hay pared y fuera puedes ver un paisaje	soleado. Hacia el sur hay un pasadizo."
+	
+	Instead of going north in the Celda:
 		if the pared is cortada begin;
-			say  "Cruzas la puerta que tú mismo has creado en el muro
-			de cristal y sales al exterior triunfante.";
-			end the game in victory;[R:When play ends]
+			end the story finally saying "Cruzas la puerta que tú mismo has creado en el muro de cristal y sales al exterior triunfante.";
 		otherwise;
-			say "Ouch! ¿Qué es esto? Lo que habías tomado
-			por ausencia de pared es en realidad un muro de cristal transparente.
-			¡No puedes salir!";
+			say "Ouch! ¿Qué es esto? Lo que habías tomado por ausencia de pared es en realidad un muro de cristal transparente. ¡No puedes salir!";
 		end if.
-
+	
 	Instead of going north in the Celda during Alarma:
-		if the pared is cortada then say  "No puedes salir con esa alarma sonando.
-		Te cogerían enseguida. Y te cogerán de todos modos si no la haces callar pronto.".
-
-
-	[Los objetos]
-
+		if the pared is cortada, say "No puedes salir con esa alarma sonando.	Te cogerían enseguida. Y te cogerán de todos modos si no la haces callar pronto.".
+	
 	A cupula de cristal is here. The printed name is "cúpula de cristal".
-	The description is "[if open]Está abierta.[otherwise]Examinando con
-	detenimiento la cúpula descubres una especie de juntura. Parece
-	una tapa que podría abrirse." [esto se muestra ante la orden EXAMINAR, segun la 
-		cupula esté abierta o cerrada.R: Devices and descriptions]
+	The description is "[if open]Está abierta.[otherwise]Examinando con	detenimiento la cúpula descubres una especie de juntura. Parece	una tapa que podría abrirse."
 	It is container, openable, closed and female.
 	It is fixed in place and transparent.
 	Understand "tapa" as cupula.
-
-	[ Lo siguiente es una 'Activity' para modificar la descripción de la cupula
-		mientras se describe la habitacion. ]
-	Rule for printing room description details of cupula: [R:printing room description details]
+	
+	
+	Rule for printing room description details of cupula:
 	if the cupula is open begin;
 		say " con la tapa abierta, ubicada en el centro de la habitación";
 	otherwise if the diamante autentico is in the cupula;
-		say " en cuyo interior refulge un increíble diamante" ;
+		say " en cuyo interior refulge un increíble diamante";
 	end if;
-	omit contents in listing. [evitar el listado automatico del contenido]
-
-	Instead of attacking or cutting the cupula, say "No es necesaria una acción
-		tan drástica. La cúpula tiene una tapa."
-
+	omit contents in listing.
+	
+	Instead of attacking or cutting the cupula, say "No es necesaria una acción	tan drástica. La cúpula tiene una tapa."
+	
 	A diamante autentico is in the cupula.
-	The description is "Tiene un brillo casi cegador, que no parece explicable
-		por las leyes de la óptica."
+	The description is "Tiene un brillo casi cegador, que no parece explicable	por las leyes de la óptica."
 	Understand "diamante increible/luminoso/autentico/refulgente/cegador/brillante" as diamante autentico.
 	Instead of attacking the diamante autentico, say "No podría, es muy duro."
-	Does the player mean doing something with the diamante autentico: it is likely. [para forzar la ambiguedad diamante autentico/falso inclinando la balanza al autentico. R:Does the player mean]
+	Does the player mean doing something with the diamante autentico: it is likely.
 	
 	Instead of examining the diamante autentico when the noun is inside the cupula, say "El diamante reposa sobre un cojín de terciopelo."
-
-
-	[ Lo siguiente avisa al jugador del puzzle resuelto con el texto:
-	"Consigues sacar [the noun] sin disparar la alarma."
-	Para ello primero debe verificar la accion taking para ver si se está sacando
-	algo de la cupula (poniendo la variable flagHolder a 1).
-	Luego de que la acción tiene lugar (flagHolder nos dice si se ejecutó o no
-	sobre la cupula), revisa si la cupula ya quedó vacía (aun pueden quedar más cosas).] 
-
-	Definition: A container is empty if it does not contain something. 
-
-	The flagHolder is a number that varies.
-
-	Check an actor taking something inside the cupula:
-	change flagHolder to 1.
 	
-	After taking something during Entire Game :
+	Definition: A container is empty if it does not contain something.
+	
+	The flagHolder is a number that varies.
+	
+	Check an actor taking something inside the cupula:
+		now flagHolder is 1.
+	
+	After taking something during Entire Game:
 	if flagHolder is 1 begin;
 		if the cupula is not empty begin;
 		say "Consigues sacar [the noun] sin disparar la alarma.";
 		otherwise;
 		continue the action;
 		end if;
-		change flagHolder to 0;
+		now flagHolder is 0;
 	otherwise;
 		continue the action;
-	end if.      
-	
-	
-	[ La pared de cristal (oculta, no se menciona 
-	en la descripción de la habitación)
-	Tiene una propiedad "cortada/lisa'' que hemos inventado para este
-	objeto en particular. Ya que la librería no conoce esta propiedad
-	debemos programar nosotros cómo cambia con las acciones del jugador
-	El valor inicial es "lisa". Cambiará a "cortada" cuando
-	el jugador haga la acción correcta.]
+	end if.
 	
 	The pared de cristal is here.
-	The description is "La pared norte es de un cristal tan transparente que
-		en un primer momento pensaste que no había pared."
-	The pared can be lisa or cortada. The pared is lisa.[definicion de propiedad nueva]
+	The description is "La pared norte es de un cristal tan transparente que	en un primer momento pensaste que no había pared."
+	The pared can be lisa or cortada. The pared is lisa.
 	It is female and scenery.
 	Understand "rectangulo", "puerta", "muro" as pared.
 	
@@ -4623,77 +4568,52 @@ Example: *	Cursillo Mini Juego - A little game from SPAC spanish webzine
 	
 	Instead of cutting the pared with something (called herramientita):
 		if the herramientita is a diamante autentico begin;
-			if the pared is lisa begin;[uso de propiedad nueva]   
+			if the pared is lisa begin;
 			say "Usando el diamante cortas limpiamente un rectángulo en forma de puerta.";
 			now the pared is cortada;
-			end if;	
+			end if;
 		otherwise if the herramientita is a diamante falso;
-			say "Intentas cortar el cristal usando el diamante rayado,
-		pero sólo logras rayarlo más. No creo que este diamante
-		sea auténtico...";
+			say "Intentas cortar el cristal usando el diamante rayado,	pero sólo logras rayarlo más. No creo que este diamante	sea auténtico...";
 		otherwise;
-			say "El cristal de la pared es demasiado resistente y no
-		tienes herramienta para cortarlo.";
+			say "El cristal de la pared es demasiado resistente y no	tienes herramienta para cortarlo.";
 		end if.
 	
-	[ Esto genera la acción de ir al norte.
-	Está aqui por si el jugador pone
-	ENTRA EN RECTANGULO o ATRAVIESA CRISTAL...
-	PASA POR PUERTA...]
+	
 	Instead of exiting when the player is in the Celda:
 		try going north.
 	Instead of entering the pared:
 		try going north.
 	
 	
-	[ Escenas ]
 	Alarma is a recurring scene. Alarma begins when the cupula is empty.
 	Alarma ends happily when the cupula is not empty.
-	Alarma ends sadly when the time since Alarma began is 4 minutes. 
+	Alarma ends sadly when the time since Alarma began is 4 minutes.
 	
 	When Alarma begins:
-		change contador to 0;
-		if the noun is something, say "Al sacar [the noun] de la cúpula una alarma
-		empieza a sonar en algún lugar del exterior."
+		now contador is 0;
+		if the noun is something, say "Al sacar [the noun] de la cúpula una alarma	empieza a sonar en algún lugar del exterior."
 	
 	When Alarma ends happily:
 		say "Ufff. La alarma ha parado. Creo que nadie la ha escuchado."
 	
 	When Alarma ends sadly:
-		end the game saying  "Súbitamente un rayo de luz vertical
-		aparece en la estancia y
-		se ensancha hasta convertirse en un cilindro. Cuando el
-		resplandor se apaga ves que en su lugar ha aparecido un
-		guardia con equipamiento anti-disturbios. 'Hmm' dice, 'Te
-		crees muy listo ¿eh? Me has sacado de la siesta con esa
-		maldita alarma y eso es algo que no perdono.'"
+		end the story saying "Súbitamente un rayo de luz vertical	aparece en la estancia y	se ensancha hasta convertirse en un cilindro. Cuando el	resplandor se apaga ves que en su lugar ha 	aparecido un	guardia con equipamiento anti-disturbios. 'Hmm' dice, 'Te	crees muy listo ¿eh? Me has sacado de la siesta con esa	maldita alarma y eso es algo que no perdono.'"
 	
-	The contador is a number that varies.[definicion de variable numerica]
-	[ ** Se ejecuta cada turno, si Alarma está activada: ]
+	The contador is a number that varies.
 	Every turn during Alarma:
 		increase contador by 1;
 		if contador is 2, say "La alarma sigue sonando fuera. Acabará por atraer a alguien.";
-		if contador is 3, say "Definitivamente, esa alarma te está poniendo muy
-		nervioso. Mejor devolvías el diamante a su sitio.".
+		if contador is 3, say "Definitivamente, esa alarma te está poniendo muy	nervioso. Mejor devolvías el diamante a su sitio.".
 	
 	
-	
-	[*** LA SEGUNDA CELDA Y LOS OBJETOS QUE CONTIENE ****]
-	
-	[El Cubiculo]
 	The Celda2 is south of the Celda. The printed name is "Cubículo".
-	The description is "Estás en un cubículo de techo bajo. La única salida
-		está al norte, por donde has entrado."
+	The description is "Estás en un cubículo de techo bajo. La única salida	está al norte, por donde has entrado."
 	Instead of going nowhere from Celda2, say "Te he dicho que no hay más salidas."
 	
-	
-	
-	The diamante falso is here.The printed name is "diamante rayado".
-	The description is "No brilla mucho porque su superficie está rayada. Hum
-		¿Un diamante rayado?"
+	The diamante falso is here. The printed name is "diamante rayado".
+	The description is "No brilla mucho porque su superficie está rayada. Hum	¿Un diamante rayado?"
 	Understand "diamante rayado" as diamante falso.
-	Instead of attacking the diamante falso, say "Es falso. Seguro que podría romperlo,
-		pero ¿qué ganaría con ello?"
+	Instead of attacking the diamante falso, say "Es falso. Seguro que podría romperlo,	pero ¿qué ganaría con ello?"
 	
-	[Comandos de testeo]
-	Test me with "s / toma diamante / n / abre cupula / deja diamante rayado en cupula / toma diamante / rompe pared con diamante / sal". 
+	
+	Test me with "s / toma diamante / n / abre cupula / deja diamante rayado en cupula / toma diamante / rompe pared con diamante / sal".
